@@ -1,0 +1,38 @@
+# node-qiniu-demo
+使用node将数据安全地存储到七牛云存储的一个简单的demo，供初学者参考，参考程序upload.js
+使用java，简单的将关键代码粘出：
+jsp页面通过html提交file
+后台：
+  byte[] data = file.getBytes();
+  生成token
+     private String getUpToken(String key) {
+        if (auth == null) {
+            auth = Auth.create(ACCESS_KEY, SECRET_KEY);
+        }
+        return auth.uploadToken(BUCKET, key);
+    }
+    上传字节数组
+        public String uploadFile(byte[] data) {
+        UploadManager manager = new UploadManager();
+        String key = "test.jpg";
+        try {
+            manager.put(data, key, getUpToken(key));
+        } catch (QiniuException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return DOWNLOAD_DOMAIN + key;
+    }
+上传本地文件
+        public String uploadFile(String path) {
+        UploadManager manager = new UploadManager();
+        String key = "test.jpg";
+        try {
+            manager.put(path, key, getUpToken(key));
+        } catch (QiniuException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return DOWNLOAD_DOMAIN + key;
+    }
+
