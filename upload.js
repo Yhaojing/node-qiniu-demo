@@ -4,8 +4,8 @@
 var qiniu = require('qiniu');
 var fs = require('fs');
 
-qiniu.conf.ACCESS_KEY = 'AaalZ54hN1oaGSkVlm0z5FFfuJKzNsYrS2-5NUqA';
-qiniu.conf.SECRET_KEY = 'Xvt9N6fzxB0oJUYXTZ5V90CH9wtZz4MYEE2m0SK9';
+qiniu.conf.ACCESS_KEY = '<自己的>';
+qiniu.conf.SECRET_KEY = '<自己的>';
 
 //bucketname空间名称
 function uptoken(bucketname) {
